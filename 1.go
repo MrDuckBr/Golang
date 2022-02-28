@@ -2,14 +2,15 @@ package main
 
 import "fmt"
 
-func Hi() string {
-	return "Olá, Mundo"
-}
+const prefixoOla = "Olá, "
 
-func HiWithParameters(parameter string) string {
-	return "Olá, " + parameter
+func Hi(parameter string) string {
+	if parameter == "" {
+		parameter = "Mundo"
+	}
+	return prefixoOla + parameter
 }
 
 func main() {
-	fmt.Println(Hi())
+	fmt.Println(Hi("Walisson"))
 }

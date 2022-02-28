@@ -3,20 +3,27 @@ package main
 import "testing"
 
 func TestHi(t *testing.T) {
-	resultado := Hi()
-	esperado := "Olá, Mundo"
 
-	if resultado != esperado {
-		t.Errorf("esperado %s, resultado %s", esperado, resultado)
+	verificaMensagemCorreta := func(t *testing.T, esperado, resultado string) {
+		t.Helper()
+		if resultado != esperado {
+			t.Errorf("esperado %s, resultado %s", esperado, resultado)
+		}
+
 	}
-}
 
-func TestHiWithParameters(t *testing.T) {
-	resultado := HiWithParameters("Walisson")
-	esperado := "Olá, Walisson"
+	t.Run("Quando vazia ela tem que imprimir 'ola mundo'", func(t *testing.T) {
+		resultado := Hi("")
+		esperado := "Olá, Mundo"
+		verificaMensagemCorreta(t, esperado, resultado)
 
-	if resultado != esperado {
-		t.Errorf("esperado %s, resultado %s", esperado, resultado)
-	}
+	})
+
+	t.Run("Quando passar uma string deve completar 'ola, walisson'", func(t *testing.T) {
+		resultado := Hi("Walisson")
+		esperado := "Olá, Walisson"
+		verificaMensagemCorreta(t, esperado, resultado)
+
+	})
 
 }
