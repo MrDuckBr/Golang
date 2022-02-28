@@ -1,16 +1,33 @@
 package main
 
-import "fmt"
-
+const espanhol = "Espanhol"
+const frances = "Frances"
 const prefixoOla = "Olá, "
+const prefixoEspanhol = "Hola, "
+const prefixoFrances = "Bonjour, "
 
-func Hi(parameter string) string {
-	if parameter == "" {
-		parameter = "Mundo"
+func Hi(nome, idioma string) string {
+	if nome == "" {
+		nome = "Mundo"
 	}
-	return prefixoOla + parameter
+
+	return prefixoIdiomas(idioma) + nome
+
+}
+func prefixoIdiomas(idioma string) (prefixo string) {
+
+	switch idioma {
+	case frances:
+		prefixo = prefixoFrances
+	case espanhol:
+		prefixo = prefixoEspanhol
+	default:
+		prefixo = prefixoOla
+	}
+	return
+
 }
 
 func main() {
-	fmt.Println(Hi("Walisson"))
+
 }
