@@ -28,7 +28,3 @@ func prefixoIdiomas(idioma string) (prefixo string) {
 	return
 
 }
-
-func main() {
-
-}
